@@ -39,7 +39,7 @@ public class StudentLogin extends HttpServlet {
             String classId = request.getParameter("class_name");
             String rollno = request.getParameter("student_rollno"),role,name,picture;
             String id;
-            ps = conn.prepareStatement("SELECT students.userId,user.full_name,user.picture,roleinfo.name FROM students INNER JOIN user ON (students.userId = user.id) INNER JOIN roleinfo ON (user.roleId = roleinfo.id) WHERE students.rollno = '"+rollno+"' AND students.classId ='"+classId+"' AND user.roleId ="+roleId+" AND user.state = "+state+" ");
+            ps = conn.prepareStatement("SELECT students.userId,users.full_name,users.picture,roleinfo.name FROM students INNER JOIN users ON (students.userId = users.id) INNER JOIN roleinfo ON (users.roleId = roleinfo.id) WHERE students.rollno = '"+rollno+"' AND students.classId ='"+classId+"' AND users.roleId ="+roleId+" AND users.state = "+state+" ");
             rs = ps.executeQuery();
             if(rs.next()){
                 role = rs.getString("name");
